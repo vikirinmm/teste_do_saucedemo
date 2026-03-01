@@ -1,3 +1,10 @@
+import { loginelements } from './pages/login.elements'
+
+Cypress.Commands.add('login', (username, password) => {
+  cy.get(loginelements.usernameInput).type(username)
+  cy.get(loginelements.passwordInput).type(password)
+  cy.get(loginelements.loginButton).click()
+})
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
