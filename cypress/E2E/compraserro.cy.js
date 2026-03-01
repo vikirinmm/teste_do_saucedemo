@@ -2,13 +2,7 @@ describe('checkout - caminho ruim', () => {
   beforeEach(() => {
     cy.visit('https://www.saucedemo.com')
     cy.login('standard_user', 'secret_sauce')
-
-    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
-    cy.get('.shopping_cart_link').click()
-    cy.get('[data-test="checkout"]').click()
-
-    // garante que está na tela certa do checkout
-    cy.url().should('include', 'checkout-step-one')
+    cy.AdicinarCarrinho()
   })
 
   it('deve mostrar erro ao tentar continuar sem preencher dados', () => {

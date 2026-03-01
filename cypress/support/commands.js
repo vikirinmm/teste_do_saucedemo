@@ -14,6 +14,12 @@ Cypress.Commands.add('checkout', ({ firstName, lastName, zip }) => {
   cy.get('[data-test="finish"]').click()
   cy.get('.complete-header').should('contain', 'Thank you for your order!')
 })
+Cypress.Commands.add('AdicinarCarrinho', (item) => {
+  cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+  cy.get('.shopping_cart_link').click()
+  cy.get('[data-test="checkout"]').click()
+  cy.url().should('include', 'checkout-step-one')
+})
 
 // ***********************************************
 // This example commands.js shows you how to
