@@ -5,6 +5,16 @@ Cypress.Commands.add('login', (username, password) => {
   cy.get(loginelements.passwordInput).type(password)
   cy.get(loginelements.loginButton).click()
 })
+Cypress.Commands.add('checkout', ({ firstName, lastName, zip }) => {
+  cy.get('[data-test="checkout"]').click()
+  cy.get('[data-test="firstName"]').type(firstName)
+  cy.get('[data-test="lastName"]').type(lastName)
+  cy.get('[data-test="postalCode"]').type(zip)
+  cy.get('[data-test="continue"]').click()
+  cy.get('[data-test="finish"]').click()
+  cy.get('.complete-header').should('contain', 'Thank you for your order!')
+})
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
